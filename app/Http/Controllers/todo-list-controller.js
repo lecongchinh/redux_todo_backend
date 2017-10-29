@@ -5,15 +5,16 @@ let todoListStore = new TodoListStore(DBConnection);
 
 function getTodo(req, res, next) {
     todoListStore.getTodo().then(results => {
-       res.render('index.html', {results: 'results'});
+       res.json(results);
     })
     .catch (next);
 }
 
 function createTodo(req, res, next) {
-    todoListStore.createTodo(req.todo).then((todo) => {
-        res.redirect('/');
+    todoListStore.createTodo(req.body).then((todo) => {
+        console.log(todo);
     })
+        .catch(next);
 }
 
 function updateTodo(req, res, next) {

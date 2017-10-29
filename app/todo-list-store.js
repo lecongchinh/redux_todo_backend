@@ -7,6 +7,11 @@ class TodoListStore {
         let query = 'INSERT INTO todo_list SET ?';
         return new Promise((resolve, reject) => {
             this.DBConnection.query(query, [todo], (err, result) => {
+                // if(err) {
+                //     console.log(1);
+                // } else {
+                //     console.log(2);
+                // }
                 (err) ? reject(err) : resolve(result);
             })
         })
@@ -34,6 +39,11 @@ class TodoListStore {
         let query = 'SELECT * FROM todo_list';
         return new Promise((resolve, reject) => {
             this.DBConnection.query(query, (err, results) => {
+                // if(err) {
+                //     console.log(1);
+                // } else {
+                //     console.log(2);
+                // }
                 err ? reject(err) : resolve(results);
             })
         })
