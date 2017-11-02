@@ -18,14 +18,15 @@ function createTodo(req, res, next) {
 }
 
 function updateTodo(req, res, next) {
-    todoListStore.updateTodo(req.todo).then((todo) => {
+    // console.log(req.body);
+    todoListStore.updateTodo(req.body).then((todo) => {
         res.json(todo);
     })
 }
 
 function deleteTodo(req, res, next) {
-    todoListStore.deleteTodo(req.todo.id).then(() => {
-        res.json(req.todo.id);
+    todoListStore.deleteTodo(req.params.id).then(() => {
+        res.json(req.params.id);
     })
     .catch(next);
 }

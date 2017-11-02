@@ -27,10 +27,15 @@ class TodoListStore {
     }
 
     updateTodo(todo) {
-        let query = 'UPDATE todo_list set ?';
+        let query = 'UPDATE todo_list set element= ? where id= ?';
         return new Promise((resolve, reject) => {
-            this.DBConnection.query(query, [todo], (err, result) => {
+            this.DBConnection.query(query, [todo.element, todo.id], (err, result) => {
                 err ? reject(err) : resolve(result);
+                // if(err) {
+                //     console.log(1);
+                // } else {
+                //     console.log(2);
+                // }
             })
         })
     }
