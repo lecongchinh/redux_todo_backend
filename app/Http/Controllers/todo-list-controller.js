@@ -1,4 +1,4 @@
-const DBConnection = require('../../../database/DBConnection');
+const DBConnection  = require('../../../database/DBConnection');
 const TodoListStore = require('../../todo-list-store');
 
 let todoListStore = new TodoListStore(DBConnection);
@@ -20,8 +20,9 @@ function createTodo(req, res, next) {
 function updateTodo(req, res, next) {
     // console.log(req.body);
     todoListStore.updateTodo(req.body).then((todo) => {
-        res.json(todo);
+        console.log(todo);
     })
+        .catch(next);
 }
 
 function deleteTodo(req, res, next) {
@@ -31,7 +32,7 @@ function deleteTodo(req, res, next) {
     .catch(next);
 }
 
-exports.getTodo = getTodo;
+exports.getTodo    = getTodo;
 exports.createTodo = createTodo;
 exports.updateTodo = updateTodo;
 exports.deleteTodo = deleteTodo;
